@@ -1,17 +1,11 @@
-import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
+
 import { Layout, Menu, MenuProps, theme } from "antd";
-import { createElement } from "react";
+import { createElement, Suspense } from "react";
+import { Outlet } from "react-router";
 
 
 const {Content,Header,Sider,Footer} = Layout;
 
-// const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-//     (icon, index) => ({
-//       key: String(index + 1),
-//       icon: createElement(icon),
-//       label: `nav ${index + 1}`,
-//     }),
-//   );
 
 const items: MenuProps['items'] = [
     {
@@ -46,8 +40,8 @@ const MainLayout = () => {
       } = theme.useToken();
 
     return (
-        <Layout  style={{height: "100vh"}} >
-        <Sider 
+        <Layout style={{height: "100vh"}} >
+        <Sider
           breakpoint="lg"
           collapsedWidth="0"
           onBreakpoint={(broken) => {
@@ -57,7 +51,7 @@ const MainLayout = () => {
             console.log(collapsed, type);
           }}
         >
-            <div  style={{ color: 'wheat', textAlign: 'center', marginTop: '10px'}}>
+            <div className=" text-center text-white text-xl font-semibold mt-4">
                 <h1>Nexen University</h1>
             </div>
           <div className="demo-logo-vertical" />
@@ -74,10 +68,14 @@ const MainLayout = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
-             The main content should go here
+             <main>
+        <Suspense fallback={<div>Loading page...</div>}>
+          <Outlet /> {/* Nested routes are rendered here */}
+        </Suspense>
+      </main>
             </div>
           </Content>
-          <Footer className="text-3xl" style={{ textAlign: 'center' }}>
+          <Footer style={{ textAlign: 'center' }}>
             Ant Design ©{new Date().getFullYear()} Created by Ant UED
           </Footer>
         </Layout>

@@ -1,13 +1,16 @@
-import MainLayout from "./components/layout/MainLayout"
+import { useRoutes } from "react-router"
+import { routes } from "./routes/routes"
+import { Suspense } from "react";
 
 
 function App() {
 
+  const route = useRoutes(routes);
+
   return (
-    <>
-     <MainLayout/>
-     <h1 className="text-red-500">Helloo</h1>
-    </>
+    <Suspense fallback={<div>Loading page...</div>}>
+   {route}
+  </Suspense>
   )
 }
 
