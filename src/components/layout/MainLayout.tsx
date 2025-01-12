@@ -46,8 +46,8 @@ const MainLayout = () => {
       } = theme.useToken();
 
     return (
-        <Layout style={{height: "100vh"}} >
-        <Sider
+        <Layout  style={{height: "100vh"}} >
+        <Sider 
           breakpoint="lg"
           collapsedWidth="0"
           onBreakpoint={(broken) => {
@@ -57,7 +57,7 @@ const MainLayout = () => {
             console.log(collapsed, type);
           }}
         >
-            <div style={{color: 'white', textAlign: 'center', marginTop: '10px'}}>
+            <div  style={{ color: 'wheat', textAlign: 'center', marginTop: '10px'}}>
                 <h1>Nexen University</h1>
             </div>
           <div className="demo-logo-vertical" />
@@ -77,7 +77,7 @@ const MainLayout = () => {
              The main content should go here
             </div>
           </Content>
-          <Footer style={{ textAlign: 'center' }}>
+          <Footer className="text-3xl" style={{ textAlign: 'center' }}>
             Ant Design ©{new Date().getFullYear()} Created by Ant UED
           </Footer>
         </Layout>
