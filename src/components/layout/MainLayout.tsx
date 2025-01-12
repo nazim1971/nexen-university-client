@@ -1,9 +1,25 @@
-import { Layout, Menu } from "antd";
+import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
+import { Layout, Menu, theme } from "antd";
+import React from "react";
 
-const {Content,Header,Sider,Footer} = Layout
+
+const {Content,Header,Sider,Footer} = Layout;
+
+const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+    (icon, index) => ({
+      key: String(index + 1),
+      icon: React.createElement(icon),
+      label: `nav ${index + 1}`,
+    }),
+  );
 
 
 const MainLayout = () => {
+
+    const {
+        token: { colorBgContainer, borderRadiusLG },
+      } = theme.useToken();
+
     return (
         <Layout>
         <Sider
