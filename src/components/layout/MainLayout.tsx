@@ -1,6 +1,6 @@
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
 import { Layout, Menu, theme } from "antd";
-import React from "react";
+import { createElement } from "react";
 
 
 const {Content,Header,Sider,Footer} = Layout;
@@ -8,7 +8,7 @@ const {Content,Header,Sider,Footer} = Layout;
 const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
     (icon, index) => ({
       key: String(index + 1),
-      icon: React.createElement(icon),
+      icon: createElement(icon),
       label: `nav ${index + 1}`,
     }),
   );
@@ -46,7 +46,7 @@ const MainLayout = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
-              content
+             The main content should go here
             </div>
           </Content>
           <Footer style={{ textAlign: 'center' }}>
