@@ -1,17 +1,42 @@
 import { UploadOutlined, UserOutlined, VideoCameraOutlined } from "@ant-design/icons";
-import { Layout, Menu, theme } from "antd";
+import { Layout, Menu, MenuProps, theme } from "antd";
 import { createElement } from "react";
 
 
 const {Content,Header,Sider,Footer} = Layout;
 
-const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
-    (icon, index) => ({
-      key: String(index + 1),
-      icon: createElement(icon),
-      label: `nav ${index + 1}`,
-    }),
-  );
+// const items = [UserOutlined, VideoCameraOutlined, UploadOutlined, UserOutlined].map(
+//     (icon, index) => ({
+//       key: String(index + 1),
+//       icon: createElement(icon),
+//       label: `nav ${index + 1}`,
+//     }),
+//   );
+
+const items: MenuProps['items'] = [
+    {
+        key: '1',
+        label: 'Home'
+    },
+    {
+        key: '2',
+        label: 'Pop'
+    },
+    {
+        key: '3',
+        label: 'User management',
+        children:[
+            {
+                key: '11',
+                label: 'user-1' 
+            },
+            {
+                key: '12',
+                label: 'user-2' 
+            }
+        ]
+    }
+]
 
 
 const MainLayout = () => {
@@ -21,7 +46,7 @@ const MainLayout = () => {
       } = theme.useToken();
 
     return (
-        <Layout>
+        <Layout style={{height: "100vh"}} >
         <Sider
           breakpoint="lg"
           collapsedWidth="0"
@@ -32,6 +57,9 @@ const MainLayout = () => {
             console.log(collapsed, type);
           }}
         >
+            <div style={{color: 'white', textAlign: 'center', marginTop: '10px'}}>
+                <h1>Nexen University</h1>
+            </div>
           <div className="demo-logo-vertical" />
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
         </Sider>
