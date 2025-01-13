@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router"
-import { routes } from "./routes/routes"
+import { routes } from "./routes/AppRoutes"
 import { Suspense } from "react";
 
 
