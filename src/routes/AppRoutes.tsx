@@ -8,6 +8,8 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateStudent from "../pages/admin/CreateStudent";
 import About from "../pages/About";
 import CreateFaculty from "../pages/admin/CreateFaculty";
+import SignIn from "../pages/SignIn";
+import SignUp from "../pages/SignUp";
 
 // const MainLayout = lazy(() => import('../components/layout/MainLayout'));
 // const About = lazy(() => import('../pages/About'));
@@ -66,6 +68,9 @@ const AppRoutes = () => {
         <Route path="create-student" element={<CreateStudent />} />
         <Route path="create-faculty" element={<CreateFaculty />} />
       </Route>
+
+      <Route path="/sign-in" element={<SignIn/>} />
+      <Route path="/sign-up" element={<SignUp/>} />
     </Routes>
   );
 };
