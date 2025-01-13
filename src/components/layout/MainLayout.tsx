@@ -1,7 +1,7 @@
 
 import { Layout, Menu, MenuProps, theme } from "antd";
 import { Suspense } from "react";
-import { Outlet } from "react-router";
+import { NavLink, Outlet } from "react-router";
 
 
 const {Content,Header,Sider,Footer} = Layout;
@@ -9,25 +9,29 @@ const {Content,Header,Sider,Footer} = Layout;
 
 const items: MenuProps['items'] = [
     {
-        key: '1',
-        label: 'Home'
+        key: 'home',
+        label: <NavLink  to='/'> Home </NavLink>
     },
     {
-        key: '2',
-        label: 'Pop'
+        key: 'dashboard',
+        label: <NavLink  to='/admin/dashboard'> Dashboard </NavLink>
     },
     {
         key: '3',
         label: 'User management',
         children:[
             {
-                key: '11',
-                label: 'user-1' 
+                key: 'create-student',
+                label: <NavLink  to='/admin/create-admin'> Create-Admin </NavLink>
             },
             {
-                key: '12',
-                label: 'user-2' 
-            }
+                key: 'create-student',
+                label: <NavLink  to='/admin/create-student'> Create-Student </NavLink>
+            },
+            {
+              key: 'create-faculty',
+              label: <NavLink  to='/admin/create-faculty'> Create-Faculty </NavLink>
+          }
         ]
     }
 ]
