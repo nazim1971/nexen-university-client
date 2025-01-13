@@ -14,7 +14,7 @@ export const routes : RouteObject[] = [
       element: <MainLayout />,
       children:[
         {
-            path: '',
+            index: true,
             element: <Home/>
         },
         {
@@ -28,7 +28,7 @@ export const routes : RouteObject[] = [
       element: <MainLayout/>,
       children: [
         {
-          path: 'dashboard',
+          index: true ,
           element: <AdminDashboard/>
         },
         {
