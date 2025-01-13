@@ -7,6 +7,7 @@ import Home from "../pages/Home";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateStudent from "../pages/admin/CreateStudent";
 import About from "../pages/About";
+import CreateFaculty from "../pages/admin/CreateFaculty";
 
 // const MainLayout = lazy(() => import('../components/layout/MainLayout'));
 // const About = lazy(() => import('../pages/About'));
@@ -58,11 +59,12 @@ const AppRoutes = () => {
         <Route index element={<Home />} />
         <Route path="about" element={<About/>} />
       </Route>
-      
+
       <Route path="/admin" element={<MainLayout />}>
         <Route index element={<AdminDashboard />} />
         <Route path="dashboard" element={<AdminDashboard />} />
         <Route path="create-student" element={<CreateStudent />} />
+        <Route path="create-faculty" element={<CreateFaculty />} />
       </Route>
     </Routes>
   );
