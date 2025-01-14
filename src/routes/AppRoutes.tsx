@@ -4,7 +4,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import AdminRoutes from "./Admin.routes";
+import AdminRoutes from "./Admin/Admin.routes";
 
 
 const AppRoutes = () => {
@@ -15,7 +15,7 @@ const AppRoutes = () => {
         <Route path="about" element={<About/>} />
       </Route>
 
-      <AdminRoutes/>
+      {AdminRoutes()}
 
       <Route path="/sign-in" element={<SignIn/>} />
       <Route path="/sign-up" element={<SignUp/>} />
