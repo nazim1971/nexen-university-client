@@ -34,13 +34,7 @@ const AdminRoutes = () => {
           key={index}
           path={route.path}
           element={route.element || <div>Component not found</div>}>
-         {route.children?.map((childRoute, childIndex) => (
-            <Route
-              key={childIndex}
-              path={childRoute.path}
-              element={childRoute.element || <div>Child Component not found</div>}
-            />
-          ))}
+        
            </Route>
       ))}
     </Routes>
