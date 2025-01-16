@@ -49,7 +49,7 @@ const Sidebar = () => {
           alignItems: "center",
         }}
       >
-        <h1>GU</h1>
+        <h1 className="text-center pt-3 text-xl font-semibold" >Nexen University</h1>
       </div>
       <Menu
         theme="dark"
