@@ -15,7 +15,9 @@ const AppRoutes = () => {
         <Route path="about" element={<About/>} />
       </Route>
 
-      <Route path="/admin/*" element={<AdminRoutes />} />
+      <Route path="/admin" element={<App />}>
+        {generateRoutes(adminPaths)}
+      </Route>
 
       <Route path="/sign-in" element={<SignIn/>} />
       <Route path="/sign-up" element={<SignUp/>} />

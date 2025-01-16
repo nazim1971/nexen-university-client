@@ -1,33 +1,20 @@
-// Const.admin.ts
-import { ReactNode } from "react";
-import MainLayout from "../../components/layout/MainLayout";
+
 import AdminDashboard from "../../pages/admin/AdminDashboard";
 import CreateAdmin from "../../pages/admin/CreateAdmin";
 import CreateFaculty from "../../pages/admin/CreateFaculty";
 import CreateStudent from "../../pages/admin/CreateStudent";
 
-export interface IAdminRoute {
-  name?: string;
-  path?: string;
-  element?: ReactNode;
-  children?: IAdminRoute[];
-}
 
-export const adminPaths: IAdminRoute[] = [
+export const adminPaths = [
 
   {
     name: "Dashboard",
     path: "dashboard",
-    element: <MainLayout />,
+    element: <AdminDashboard />,
   },
   {
     name: "User Management",
     children: [
-      {
-        name: "Dashboard",
-        path: "dashboard",
-        element: <AdminDashboard />,
-      },
       {
         name: "Create Admin",
         path: "create-admin",
