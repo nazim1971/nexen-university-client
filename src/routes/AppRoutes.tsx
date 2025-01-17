@@ -5,6 +5,8 @@ import SignUp from "../pages/SignUp";
 import App from "../App";
 import { generateRoutes } from "../utils/routeGenerator";
 import { adminPaths } from "./Admin/Const.admin";
+import { facultyPaths } from "./Faculty/Const.faculty";
+import { studentPaths } from "./Student/Const.student";
 
 
 const AppRoutes = () => {
