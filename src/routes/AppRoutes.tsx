@@ -18,6 +18,14 @@ const AppRoutes = () => {
         {generateRoutes(adminPaths)}
       </Route>
 
+      <Route path="/faculty" element={<App />}>
+        {generateRoutes(facultyPaths)}
+      </Route>
+
+      <Route path="/student" element={<App />}>
+        {generateRoutes(studentPaths)}
+      </Route>
+
       <Route path="/sign-in" element={<SignIn/>} />
       <Route path="/sign-up" element={<SignUp/>} />
     </Routes>
