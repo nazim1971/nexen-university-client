@@ -1,5 +1,7 @@
 import { Button, Checkbox, Form, FormProps, Input } from "antd";
 import { useLoginMutation } from "../redux/features/auth/authApi";
+import { useAppDispatch } from "../redux/hooks";
+import { setUser } from "../redux/features/auth/authSlice";
 
 
 type FieldType = {
@@ -13,19 +15,21 @@ type FieldType = {
 
 
 const SignIn = () => {
+  const dispatch = useAppDispatch();
 
   const [login, {data, error} ] = useLoginMutation();
 
 console.log("data=> ", data);
 console.log("error", error);
 
-const onFinish: FormProps<FieldType>['onFinish'] = (values) => {
+const onFinish: FormProps<FieldType>['onFinish'] =  async(values) => {
   console.log('Success:', values);
   const userInfo = {
     id: values.id,
     password: values.password
   }
-  login(userInfo)
+ const res = await login(userInfo).unwrap();
+ dispatch(setUser({user:{}, token: res.data.Atoken }))
 };
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
