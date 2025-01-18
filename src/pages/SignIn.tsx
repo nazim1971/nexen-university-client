@@ -3,6 +3,7 @@ import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/features/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
+import { useNavigate } from "react-router";
 
 
 type FieldType = {
@@ -17,6 +18,7 @@ type FieldType = {
 
 const SignIn = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [login, {data, error} ] = useLoginMutation();
 
