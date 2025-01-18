@@ -2,6 +2,7 @@ import { Button, Checkbox, Form, FormProps, Input } from "antd";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/features/auth/authSlice";
+import { verifyToken } from "../utils/verifyToken";
 
 
 type FieldType = {
@@ -29,7 +30,9 @@ const onFinish: FormProps<FieldType>['onFinish'] =  async(values) => {
     password: values.password
   }
  const res = await login(userInfo).unwrap();
- dispatch(setUser({user:{}, token: res.data.Atoken }))
+ const user = verifyToken(res.data.Atoken);
+ 
+ dispatch(setUser({user: user , token: res.data.Atoken }))
 };
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
