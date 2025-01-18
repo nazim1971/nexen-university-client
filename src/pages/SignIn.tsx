@@ -1,4 +1,4 @@
-import { Button, Checkbox, Form, FormProps, Input } from "antd";
+import {  Button, Checkbox, Form, FormProps, Input, message } from "antd";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/features/auth/authSlice";
@@ -26,15 +26,27 @@ console.log("data=> ", data);
 console.log("error", error);
 
 const onFinish: FormProps<FieldType>['onFinish'] =  async(values) => {
+  
   console.log('Success:', values);
   const userInfo = {
     id: values.id,
     password: values.password
   }
- const res = await login(userInfo).unwrap();
- const user = verifyToken(res.data.Atoken);
- 
- dispatch(setUser({user: user , token: res.data.Atoken }))
+  try {
+    const res = await login(userInfo).unwrap();
+    const user = verifyToken(res.data.Atoken);
+
+    dispatch(setUser({ user: user, token: res.data.Atoken }));
+
+    // Show success message using Ant Design's message component
+    message.success('Login successful!');
+
+    navigate(`/${user.role}/dashboard`);
+  } catch (error) {
+    // Show error message if login fails
+    message.error('Login failed. Please check your credentials.');
+    console.error("Login error:", error);
+  }
 };
 
 const onFinishFailed: FormProps<FieldType>['onFinishFailed'] = (errorInfo) => {
