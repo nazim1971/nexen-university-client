@@ -3,7 +3,8 @@ import { menuGenerator } from "../../utils/sidebarMenuGeneratoe";
 import { adminPaths } from "../../routes/Admin/Const.admin";
 import { facultyPaths } from "../../routes/Faculty/Const.faculty";
 import { studentPaths } from "../../routes/Student/Const.student";
-const {  Sider } = Layout;
+import Sider from "antd/es/layout/Sider";
+
 
 const userRole = {
   ADMIN: "admin",
