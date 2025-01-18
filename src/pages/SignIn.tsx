@@ -1,7 +1,7 @@
 import {  Button, Checkbox, Form, FormProps, Input, message } from "antd";
 import { useLoginMutation } from "../redux/features/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
-import { setUser } from "../redux/features/auth/authSlice";
+import { setUser, TUser } from "../redux/features/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import { useNavigate } from "react-router";
 
@@ -34,14 +34,14 @@ const onFinish: FormProps<FieldType>['onFinish'] =  async(values) => {
   }
   try {
     const res = await login(userInfo).unwrap();
-    const user = verifyToken(res.data.Atoken);
+    const user = verifyToken(res.data.Atoken) as TUser;
 
     dispatch(setUser({ user: user, token: res.data.Atoken }));
 
     // Show success message using Ant Design's message component
     message.success('Login successful!');
 
-    navigate(`/${user.role}/dashboard`);
+    navigate(`/${user.role}/dashboard`)  
   } catch (error) {
     // Show error message if login fails
     message.error('Login failed. Please check your credentials.');
