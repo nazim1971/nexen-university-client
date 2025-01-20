@@ -39,10 +39,15 @@ const onFinish: FormProps<FieldType>['onFinish'] =  async(values) => {
     message.success('Login successful!');
 
     navigate(`/${user.role}/dashboard`)  
-  } catch (error) {
-    // Show error message if login fails
-    message.error('Login failed. Please check your credentials.');
-    console.error("Login error:", error);
+  } catch (error: any) {
+    const err = error as {status?: number};
+    if (err?.status === 403) {
+      // Show specific error for incorrect password or credentials
+      message.error('Login failed. Please check your credentials.');
+    } else {
+      // Handle any other errors
+      console.error("Login error:", error);
+    }
   }
 };
 
